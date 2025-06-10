@@ -17,10 +17,7 @@ Dataset Used : [MS-COCO 2017
 
 1) Project Overview
 
-The primary goal of this project is to build an intelligent multimodal system capable of understanding and describing visual content through natural language. 
-Specifically, it aims to generate accurate and context-aware captions for images and enable users to interact with the system by asking questions about those images.
-This functionality has direct applications in accessibility tools for visually impaired individuals, automated content generation, smart surveillance, and human-computer interaction. 
-The project combines computer vision and natural language processing techniques to bridge the gap between visual understanding and language generation.
+The primary goal of this project is to build an intelligent multimodal system capable of understanding and describing visual content through natural language. Specifically, it aims to generate accurate and context-aware captions for images and enable users to interact with the system by asking questions about those images.This functionality has direct applications in accessibility tools for visually impaired individuals, automated content generation, smart surveillance, and human-computer interaction. The project combines computer vision and natural language processing techniques to bridge the gap between visual understanding and language generation.
 
 Dataset Description:  MS-COCO 2017
 Images: 118,000+ training images (`train2017`)
