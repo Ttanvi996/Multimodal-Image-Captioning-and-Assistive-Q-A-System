@@ -1,25 +1,14 @@
-This repository contains the complete pipeline for building a **Multimodal Image Captioning and Assistive Q&A System**, designed to generate textual descriptions from images and answer related questions. The system is particularly geared toward supporting **visually impaired users** by interpreting visual content through AI.
+This is the project pipeline for building a Multimodal Image Captioning and Assistive Q&A System, designed to generate textual descriptions from images and answer related questions. The system is particularly geared toward supporting visually impaired users by interpreting visual content through AI.
 
 Project Type : Deep Learning, Computer Vision, Natural Language Processing  
 Core Tasks : Image Captioning, Visual Question Answering (VQA), Multimodal Understanding  
-Dataset Used : [MS-COCO 2017 
-
- Table of Contents
-  Project Overview
-  Dataset Description
-  Installation & Setup 
-  Data Preprocessing 
-  Model Architecture
-  Training Pipeline 
-  Evaluation & Results 
-  Future Work 
-  Reference 
+Dataset Used : MS-COCO 2017 
 
 1) Project Overview
 
 The primary goal of this project is to build an intelligent multimodal system capable of understanding and describing visual content through natural language. Specifically, it aims to generate accurate and context-aware captions for images and enable users to interact with the system by asking questions about those images.This functionality has direct applications in accessibility tools for visually impaired individuals, automated content generation, smart surveillance, and human-computer interaction. The project combines computer vision and natural language processing techniques to bridge the gap between visual understanding and language generation.
 
-Dataset Description:  MS-COCO 2017
+2) Dataset Description:  MS-COCO 2017
 Images: 118,000+ training images (`train2017`)
 Annotations : Over 414,000 captions
 Format : Each image is associated with 5 human-written captions.
@@ -48,29 +37,5 @@ Using Keras’ Tokenizer, the cleaned captions are converted into sequences of i
 5. Vocabulary and Sequence Statistics
 To support downstream model configuration, the script computes important statistics from the tokenized data. These include the total vocabulary size (i.e., number of unique words), the maximum caption length in tokens, and the number of valid image-caption pairs. For example, after filtering, the dataset typically contains around 82,783 image-caption pairs, a vocabulary of roughly 11,488 tokens, and captions up to 35 tokens in length.
 
-5)Model Architecture
-This project implements an image captioning pipeline by integrating a pre-trained Convolutional Neural Network (CNN) for image feature extraction with a Recurrent Neural Network (RNN) for natural language generation. Below is a breakdown of the architecture as implemented in your code.
-
-1. Image Encoder — InceptionV3 (CNN)
-The first component is a pre-trained InceptionV3 model from Keras applications, which serves as a fixed feature extractor. The model is modified as follows:
-The top classification layer is removed.
-The output is taken from the 'avg_pool' layer, yielding a 2048-dimensional feature vector for each image.
-Images are preprocessed to size 299x299 and normalized using preprocess_input specific to InceptionV3.
-The resulting features are stored in a dictionary, mapping image filenames to their extracted vectors.
-
-2. Text Preprocessing and Tokenization
-Captions are collected from the COCO annotations file.
-Each caption is wrapped with startseq and endseq tokens.
-A Keras Tokenizer is used to convert words into integer indices, including support for unknown words using the <unk> token.
-The tokenizer builds a vocabulary and converts all captions into padded integer sequences, suitable for input into the RNN.
-
-3. Caption Decoder — Planned (Not Yet Implemented in my Current Code)
-While your current code covers data preparation and image encoding, the RNN-based decoder that generates captions from image features and tokenized sequences is not yet implemented. However, based on standard practices and the pipeline setup, the intended decoder architecture is expected to follow this format:
-Input 1: The 2048-dim image vector passed through a Dense() layer to reduce dimensionality.
-Input 2: The embedded token sequence (via an Embedding() layer).
-Both inputs are merged (e.g., via concatenation or addition).
-The merged vector is passed to an LSTM layer to generate the next word in the sequence.
-Output is a softmax over the vocabulary predicting the next word.
-The architecture will likely use teacher forcing during training and greedy/beam decoding during inference.
 
 
